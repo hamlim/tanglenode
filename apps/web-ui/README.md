@@ -1,4 +1,4 @@
-# Garbanzo Template App
+# Tanglenode
 
 Get started with:
 
