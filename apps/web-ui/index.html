@@ -1,0 +1,36 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="icon" type="image/svg+xml" href="/vite.svg" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <script type="module">
+
+      let themes = {
+        light: 'emerald',
+        dark: 'forest'
+      }
+
+      function themeCheck() {
+        let prefersDarkModeQuery = window.matchMedia("(prefers-color-scheme: dark)");
+        let preferred = prefersDarkModeQuery.matches ? "dark" : "light";
+        document.documentElement.classList.add(themes[preferred]);
+        document.documentElement.setAttribute("data-theme", themes[preferred]);
+        prefersDarkModeQuery.addEventListener("change", (e) => {
+          let newPreferred = e.matches ? "dark" : "light";
+          document.documentElement.classList.remove(themes[preferred]);
+          document.documentElement.classList.add(themes[newPreferred]);
+          document.documentElement.setAttribute("data-theme", themes[newPreferred]);
+          preferred = newPreferred;
+        });
+      }
+
+      themeCheck();
+    </script>
+    <title>Tanglenode</title>
+  </head>
+  <body>
+    <div id="root"></div>
+    <script type="module" src="/src/main.tsx"></script>
+  </body>
+</html>
