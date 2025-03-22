@@ -10,8 +10,8 @@
     "preview": "vite preview"
   },
   "dependencies": {
-    "@cloudflare/workers-types": "^4.20250320.0",
-    "@tailwindcss/vite": "^4.0.15",
+    "@cloudflare/workers-types": "4.20250320.0",
+    "@tailwindcss/vite": "4.0.15",
     "react": "experimental",
     "react-dom": "experimental",
     "react-router": "7.4.0",
