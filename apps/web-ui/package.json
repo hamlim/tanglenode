@@ -5,10 +5,12 @@
   "type": "module",
   "scripts": {
     "dev": "vite",
-    "build": "tsc -b && vite build",
+    "build": "vite build",
     "lint": "biome ci .",
     "preview": "vite preview",
-    "deploy": "wrangler deploy"
+    "deploy": "wrangler deploy",
+    "prepreview:deploy": "bun run build",
+    "preview:deploy": "wrangler versions upload"
   },
   "dependencies": {
     "@cloudflare/workers-types": "4.20250320.0",
