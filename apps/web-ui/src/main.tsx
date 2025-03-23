@@ -8,6 +8,7 @@ createRoot(document.getElementById("root")!).render(
   <StrictMode>
     <BrowserRouter>
       <h1>Tanglenode</h1>
+      <p>Whatup?!</p>
     </BrowserRouter>
   </StrictMode>,
 );
