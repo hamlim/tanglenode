@@ -1,0 +1,9 @@
+---
+description: 
+globs: 
+alwaysApply: true
+---
+
+When building UI elements, prefer the styles from the daisy-ui style library/tailwind plugin.
+
+Here are the docs for daisy-ui: https://daisyui.com/llms.txt

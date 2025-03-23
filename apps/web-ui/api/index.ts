@@ -1,17 +1,34 @@
+import { Hono } from "hono";
+
 interface Env {
   ASSETS: Fetcher;
 }
 
-export default {
-  fetch(request, env) {
-    const url = new URL(request.url);
+const app = new Hono<{ Bindings: Env }>();
 
-    if (url.pathname.startsWith("/api/")) {
-      return Response.json({
-        name: "Cloudflare",
-      });
-    }
+app.post("/login", async function loginHandler(c) {
+  const body = await c.req.text();
+  const searchParams = new URLSearchParams(body);
+  const email = searchParams.get("email");
+  const password = searchParams.get("password");
 
-    return env.ASSETS.fetch(request);
-  },
-} satisfies ExportedHandler<Env>;
+  // Validate inputs
+  if (!email || !password) {
+    return c.redirect("/login?error=MissingFields");
+  }
+
+  // TODO: Auth logic...
+  const success = false; // placeholder
+  if (!success) {
+    return c.redirect("/login?error=InvalidCredentials");
+  }
+
+  // Success: redirect to app
+  return c.redirect("/app");
+});
+
+app.all("*", (c) => {
+  return c.env.ASSETS.fetch(c.req.raw);
+});
+
+export default app;
