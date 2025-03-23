@@ -7,7 +7,8 @@
     "dev": "vite",
     "build": "tsc -b && vite build",
     "lint": "biome ci .",
-    "preview": "vite preview"
+    "preview": "vite preview",
+    "deploy": "wrangler deploy"
   },
   "dependencies": {
     "@cloudflare/workers-types": "4.20250320.0",
@@ -25,6 +26,6 @@
     "daisyui": "5.0.9",
     "typescript": "5.7.2",
     "vite": "6.2.0",
-    "wrangler": "4.3.0"
+    "wrangler": "4.4.0"
   }
 }
