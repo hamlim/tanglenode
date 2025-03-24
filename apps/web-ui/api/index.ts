@@ -27,6 +27,17 @@ app.post("/login", async function loginHandler(c) {
   return c.redirect("/app");
 });
 
+app.get("/app", async function appHandler(c) {
+  let userCookie = c.req.header("Cookie");
+  let user = await getUserFromCookie(userCookie);
+
+  if (!user) {
+    return c.redirect("/login");
+  }
+
+  return c.env.ASSETS.fetch(c.req.raw);
+});
+
 app.all("*", (c) => {
   return c.env.ASSETS.fetch(c.req.raw);
 });
